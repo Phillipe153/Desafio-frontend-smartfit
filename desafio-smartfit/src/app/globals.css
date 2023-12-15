@@ -1,0 +1,19 @@
+:root {
+
+
+}
+
+.header {
+  width: 100%;
+  background-color: black;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+
+ 
+
+}
+.header svg {
+  width: 130px;
+  height: 100px;
+}
