@@ -1,8 +1,12 @@
 "use client"
-import { styled } from "styled-components"
+import { MouseEvent, ChangeEvent } from 'react';
+import { styled } from "styled-components";
+
+import { useContext, useState, useEffect } from 'react';
+import { SamrtFitContext } from "@/context/smartfitContext";
 
 
-const Teste = styled.div`
+const DivButtons = styled.div`
     display: flex;
     justify-content: space-around;
 
@@ -20,8 +24,6 @@ const Teste = styled.div`
         }
     }
 
-
-    
     :first-child{
         border-style: none;
         background-color: #FCB823;
@@ -30,11 +32,41 @@ const Teste = styled.div`
         }
     }
 `
+// export interface Product<T> extends ChangeEvent{
+//     value: string
+// }
+
+const HandleClickSearchUnity = (event:  MouseEvent< HTMLButtonElement>) =>{
+    event.preventDefault();
+    console.log(event.target.value);
+    
+}
+
+
+
 export function Buttons() {
+    const {horario, setHorario } = useContext(SamrtFitContext)
+    const HandleClickClear = (event: MouseEvent<HTMLButtonElement>) =>{
+        event.preventDefault();
+
+        setHorario('')
+        const horarioManha = document.getElementById('manhã') as HTMLInputElement;
+        const horarioTarde = document.getElementById('tarde') as HTMLInputElement;
+        const horarioNoite = document.getElementById('noite') as HTMLInputElement;
+        const unidadesFechadas = document.getElementById('unidadesFechadas') as HTMLInputElement;
+
+        
+        horarioManha!.checked = false;
+        horarioTarde!.checked = false;
+        horarioNoite!.checked = false;
+        unidadesFechadas!.checked = false;
+
+    
+       } 
     return(
-        <Teste>
-            <button>ENCONTRAR UNIDADE</button>
-            <button>LIMPAR</button>
-        </Teste>
+        <DivButtons>
+            <button value='teste' onClick={HandleClickSearchUnity}>ENCONTRAR UNIDADE</button>
+            <button value='teste2' onClick={(event) => HandleClickClear(event)}>LIMPAR</button>
+        </DivButtons>
     )
 }

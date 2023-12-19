@@ -1,5 +1,8 @@
 "use client"
 import { styled } from "styled-components"
+import { ChangeEvent } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { SamrtFitContext } from "@/context/smartfitContext";
 
 const Periodos = styled.div`
     display: flex;
@@ -14,6 +17,7 @@ const Label = styled.label`
     display: flex;
     border-bottom: solid 1px;
     border-color: #bebebe;
+    cursor: pointer;
    
 
 `
@@ -29,34 +33,55 @@ const LabelCheckbox = styled.label`
         width: 100%;
         height: 30px;
         align-items: center;
+        :first-child{
+            cursor: pointer;
+        }
     }
 
 `
 
 
+
 export function Inputs() {
+    const {
+        horario,
+        setHorario,
+    } = useContext(SamrtFitContext)
+
+    const handleChangeHorarioInput = (event:  ChangeEvent<HTMLInputElement>) => {
+        setHorario(event.target.value)
+
+        console.log('horario: ',horario);
+        
+    }
     return(
         <form>
             <Label htmlFor="manhã">
-                <input type="radio" id="manhã" name="horario" value="manhã 6:00 às 12:00" />
-                <Periodos>
-                    <p>Manhã</p>
-                    <p>6:00 às 12:00</p>
-                </Periodos>
+                <input
+                    onChange={(event) => handleChangeHorarioInput(event)}
+                    type="radio" id="manhã" name="horario" value="manhã 6:00 às 12:00" />
+                    <Periodos>
+                        <p>Manhã</p>
+                        <p>6:00 às 12:00</p>
+                    </Periodos>
             </Label>
             <Label htmlFor="tarde">
-                <input type="radio" id="tarde" name="horario" value="tarde 12:01 às 18:00" />
-                <Periodos>
-                    <p>Tarde</p>
-                    <p>12:01 às 18:00</p>   
-                </Periodos>              
+                <input
+                    onChange={(event) => handleChangeHorarioInput(event)}
+                    type="radio" id="tarde" name="horario" value="tarde 12:01 às 18:00" />
+                    <Periodos>
+                        <p>Tarde</p>
+                        <p>12:01 às 18:00</p>   
+                    </Periodos>              
             </Label>
             <Label htmlFor="noite">
-                <input type="radio" id="noite" name="horario" value="noite 18:01 às 23:00" />
-                <Periodos>
-                    <p>Noite</p>
-                    <p>18:01 às 23:00</p>                 
-                </Periodos>
+                <input
+                    onChange={(event) => handleChangeHorarioInput(event)}
+                    type="radio" id="noite" name="horario" value="noite 18:01 às 23:00" />
+                    <Periodos>
+                        <p>Noite</p>
+                        <p>18:01 às 23:00</p>                 
+                    </Periodos>
             </Label>
             <LabelCheckbox htmlFor="unidadesFechadas">
                 <input type="checkbox" id="unidadesFechadas" name="unidadesFechadas" value="unidadesFechadas" />

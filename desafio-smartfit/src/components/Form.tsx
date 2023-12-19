@@ -4,6 +4,14 @@ import { Buttons } from "./Buttons";
 import { Horario } from "./Horario";
 import { Inputs } from "./Inputs";
 
+const Main = styled.div`
+    
+    p{
+        font-size: smaller;
+    }
+
+`
+
 const BoxForm = styled.form`
     border: solid 2px;
     border-color: #bebebe;
@@ -27,7 +35,7 @@ const BorderBottomTilte = styled.div`
 
 export function Form () {
     return(
-        <div>
+        <Main>
                 <h1>REABERTURA<br></br> SMART FIT</h1>
                 <BorderBottomTilte></BorderBottomTilte>
             <p>
@@ -39,6 +47,6 @@ export function Form () {
                 <Inputs />
                 <Buttons />
             </BoxForm>
-        </div>
+        </Main>
     )
 }
