@@ -7,20 +7,19 @@
 
 "use client"
 
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 
 import propTypes from 'prop-types';
+import getUnidades from "@/service/getUnidades";
+import { Unidades } from "@/interface/unidades";
+
 
 
 export const SamrtFitContext = createContext({
-    horario: 'te',
+    horario: '',
     setHorario: (value: string) => {},
-    // checkedManha: false,
-    // setCheckedManha: (value: boolean) => {},
-    // checkedTarde: false,
-    // setCheckedTarde: (value: boolean) => {},
-    // checkedNoite: false,
-    // setCheckedNoite: (value: boolean) => {},
+    unidades: [],
+    setUnidades: (value: Unidades) => {}
 })
 
 
@@ -32,21 +31,20 @@ interface ProviderProps {
 
 export function SamrtFitProvider({children}: ProviderProps) {
     const [horario, setHorario] = useState('');
-    // const [checkedManha, setCheckedManha] = useState(false);
-    // const [checkedTarde, setCheckedTarde] = useState(false);
-    // const [checkedNoite, setCheckedNoite] = useState(false);
+    const [unidades, setUnidades] = useState([]);
+    useEffect(() => {
+        getUnidades().then((response) => {
+            setUnidades(response)
+        })
+    }, []);
 
 
 
     const context = {
         horario,
         setHorario,
-        // checkedManha,
-        // setCheckedManha,
-        // checkedTarde,
-        // setCheckedTarde,
-        // checkedNoite,
-        // setCheckedNoite,
+        unidades,
+        setUnidades,
     }
 
 

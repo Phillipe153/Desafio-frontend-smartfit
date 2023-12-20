@@ -16,7 +16,7 @@ const Icon = styled.img`
 export function Horario() {
     return(
         <HourWithIcon>
-            <Icon src="../icon.ico" alt="Ícone de um relogio" />
+            <Icon src="../images/icon1.ico"  alt="Ícone de um relogio" />
             <p>Horário</p>
 
         </HourWithIcon>
