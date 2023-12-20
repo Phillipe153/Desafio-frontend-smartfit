@@ -19,7 +19,9 @@ export const SamrtFitContext = createContext({
     horario: '',
     setHorario: (value: string) => {},
     unidades: [],
-    setUnidades: (value: Unidades) => {}
+    setUnidades: (value: Unidades) => {},
+    fechadas: false,
+    setFechadas    : (value: boolean) => {}
 })
 
 
@@ -32,6 +34,8 @@ interface ProviderProps {
 export function SamrtFitProvider({children}: ProviderProps) {
     const [horario, setHorario] = useState('');
     const [unidades, setUnidades] = useState([]);
+    const [fechadas, setFechadas] = useState(false);
+
     useEffect(() => {
         getUnidades().then((response) => {
             setUnidades(response)
@@ -45,6 +49,9 @@ export function SamrtFitProvider({children}: ProviderProps) {
         setHorario,
         unidades,
         setUnidades,
+        fechadas,
+        setFechadas
+        
     }
 
 

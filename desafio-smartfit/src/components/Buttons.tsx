@@ -45,11 +45,12 @@ const HandleClickSearchUnity = (event:  MouseEvent< HTMLButtonElement>) =>{
 
 
 export function Buttons() {
-    const {horario, setHorario } = useContext(SamrtFitContext)
+    const {setFechadas, setHorario } = useContext(SamrtFitContext)
     const HandleClickClear = (event: MouseEvent<HTMLButtonElement>) =>{
         event.preventDefault();
 
         setHorario('')
+        setFechadas(false)
         const horarioManha = document.getElementById('manhã') as HTMLInputElement;
         const horarioTarde = document.getElementById('tarde') as HTMLInputElement;
         const horarioNoite = document.getElementById('noite') as HTMLInputElement;

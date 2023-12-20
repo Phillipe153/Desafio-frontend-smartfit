@@ -1,9 +1,9 @@
+
 "use client"
 import { SamrtFitContext } from "@/context/smartfitContext"
 import { Unidades } from "@/interface/unidades"
 import { useContext } from "react"
 import { styled } from "styled-components"
-import { FilterByOpen } from "./filterByOpen"
 
 
 const BorderBottomTilte = styled.div`
@@ -59,14 +59,14 @@ const Endereco = styled.div`
     }
 
 `
-export function Cards() {
-    const { unidades, fechadas } = useContext(SamrtFitContext)
+export function FilterByOpen() {
+    const { unidades } = useContext(SamrtFitContext)
 
 
     return(
         <Card>{
-            fechadas ? 
             unidades.map((e: Unidades) => (
+                    e.opened &&
                     <Item key={e.id}>
                         <h5 className="aberto">{e.opened && 'Aberto'}</h5>
                         <h5 className="fechado">{!e.opened && 'Fechado'}</h5>
@@ -114,9 +114,8 @@ export function Cards() {
                             </div>
                         }
                     </Item>
+
             ))
-            : <FilterByOpen />
-            }
-        </Card>
+            }</Card>
     )
 }

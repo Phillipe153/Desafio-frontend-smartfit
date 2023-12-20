@@ -46,10 +46,17 @@ export function Inputs() {
     const {
         horario,
         setHorario,
+        setFechadas
     } = useContext(SamrtFitContext)
 
     const handleChangeHorarioInput = (event:  ChangeEvent<HTMLInputElement>) => {
         setHorario(event.target.value)
+
+        console.log('horario: ',horario);
+        
+    }
+    const handleChangeOpenInput = (event:  ChangeEvent<HTMLInputElement>) => {
+        setFechadas(event.target.checked)
 
         console.log('horario: ',horario);
         
@@ -84,7 +91,10 @@ export function Inputs() {
                     </Periodos>
             </Label>
             <LabelCheckbox htmlFor="unidadesFechadas">
-                <input type="checkbox" id="unidadesFechadas" name="unidadesFechadas" value="unidadesFechadas" />
+                <input
+                    onChange={(event) => handleChangeOpenInput(event)}
+
+                    type="checkbox" id="unidadesFechadas" name="unidadesFechadas" value="unidadesFechadas" />
                 <div>
                     <p>Exibir unidades fechadas</p>
                     <p>Resultados encontrados:</p>                 
