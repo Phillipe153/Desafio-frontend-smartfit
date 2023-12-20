@@ -24,7 +24,7 @@ const Icon = styled.img`
 
 const Item = styled.div`
     background-color: #f0efef;
-    border: 2px groove #f0efef;;
+    border: 2px solid #eae9e9;;
     border-radius: 8px;
     padding: 10px;
 
